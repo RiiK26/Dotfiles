@@ -184,3 +184,95 @@ Install Dotfiles
 ```
 
 This will automatically create symlinks from your home directory pointing to the files in this repository.
+
+---
+
+<details>
+<summary>
+Create cleanup routine for yay & flatpak
+</summary>
+
+## Flatpak Package (root level)
+```bash
+sudo nano /etc/systemd/system/flatpak-cleanup.service
+```
+
+### Insert this on the file, save and exit
+```bash
+[Unit]
+Description=Monthly Flatpak Cleanup
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/flatpak uninstall --unused -y
+```
+### Create timer file
+```bash
+sudo nano /etc/systemd/system/flatpak-cleanup.timer
+```
+### Insert this on the file, save and exit
+``` bash
+[Unit]
+Description=Monthly Flatpak Cleanup Timer
+
+[Timer]
+OnCalendar=monthly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+```
+### Activate timer service for flatpak
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now flatpak-cleanup.timer
+```
+
+## yay package (user level) never put yay on root level
+
+### Prepare folder systemd user
+```bash
+mkdir -p ~/.config/systemd/user
+```
+
+### Create file service yay
+```bash
+nano ~/.config/systemd/user/yay-cleanup.service
+```
+
+### Insert this script on it
+```bash
+[Unit]
+Description=Monthly Yay Cleanup Routine
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/yay -Sc --noconfirm
+ExecStart=/usr/bin/yay -Yc --noconfirm
+```
+
+### Create timer file service
+```bash
+nano ~/.config/systemd/user/yay-cleanup.timer
+```
+
+### Insert this script on it
+```bash
+[Unit]
+Description=Monthly Yay Cleanup Routine
+
+[Timer]
+OnCalendar=monthly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+```
+
+### Activate yay timer
+```bash
+systemctl --user daemon-reload
+systemctl --user enable --now yay-cleanup.timer
+```
+
+</details>
