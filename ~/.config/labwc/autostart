@@ -1,0 +1,11 @@
+#!/bin/sh
+
+eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+
+dbus-update-activation-environment --all &
+
+lxqt-policykit-agent &
+
+(sleep 2 && waybar > /tmp/waybar-error.log 2>&1) &
+(sleep 2 && swaync) &

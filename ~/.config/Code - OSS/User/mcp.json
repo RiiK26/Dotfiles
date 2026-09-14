@@ -1,0 +1,18 @@
+{
+    "servers": {
+        "cheatengine": {
+            "type": "stdio",
+            "command": "python",
+            "args": [
+                "/data/GithubRepos/cheatengine-mcp-bridge/MCP_Server/mcp_cheatengine.py"
+            ],
+            "env": {
+                "CE_MCP_TRANSPORT": "fifo"
+            }
+        },
+        "ghidra-mcp": {
+            "type": "stdio",
+            "command": "/usr/bin/bridge-mcp-ghidra"
+        }
+    }
+}

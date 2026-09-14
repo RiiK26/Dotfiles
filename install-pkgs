@@ -1,0 +1,180 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "=========================================="
+echo "    Dotfiles Package Installation Script"
+echo "=========================================="
+
+# 1. Bootstrap yay if it is not installed
+if ! command -v yay &> /dev/null; then
+    echo "yay is not installed. Bootstrapping yay from AUR..."
+    # Ensure git and base-devel are installed first
+    sudo pacman -S --needed --noconfirm git base-devel
+    
+    # Clone yay-bin and build it
+    git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
+    cd /tmp/yay-bin
+    makepkg -si --noconfirm
+    cd -
+    rm -rf /tmp/yay-bin
+    echo "yay has been successfully installed!"
+else
+    echo "yay is already installed."
+fi
+
+# 2. Package List
+PACKAGES=(
+    7zip
+    adobe-source-han-sans-cn-fonts
+    alsa-firmware
+    alsa-utils
+    android-file-transfer
+    base
+    base-devel
+    bear
+    blesh-git
+    brightnessctl
+    cmake
+    code
+    crossmacro
+    dkms
+    dmidecode
+    dotnet-sdk
+    efibootmgr
+    exiv2
+    fastfetch
+    firefox
+    flatpak
+    ghidra-mcp-git
+    git
+    gnome-menus
+    gnu-free-fonts
+    go
+    grim
+    grub
+    gtk2-compat
+    gvfs
+    gvfs-mtp
+    hyprlock
+    jdk21-openjdk
+    keyd
+    kvantum
+    labwc
+    less
+    libnotify
+    libsecp256k1
+    linux
+    linux-firmware
+    linux-headers
+    llvm
+    lxqt-archiver
+    lxqt-config
+    lxqt-policykit
+    lxqt-qtplugin
+    lxqt-wayland-session
+    man-db
+    mesa
+    mesa-utils
+    mingw-w64-gcc
+    mkcert
+    mousepad
+    nano
+    nasm
+    networkmanager
+    ninja
+    nlohmann-json
+    nodejs
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    npm
+    ntfs-3g
+    ntfsprogs
+    numlockx
+    nwg-look
+    nwg-menu
+    opencv
+    papirus-icon-theme
+    pcmanfm-qt
+    pipewire
+    pipewire-pulse
+    power-profiles-daemon
+    proton-vpn-gtk-app
+    protontricks
+    python-capstone
+    python-colorama
+    python-pefile
+    python-pip
+    python-pipx
+    python-pyqt6
+    qt5-wayland
+    qt5ct
+    qt6-5compat
+    qt6-wayland
+    qt6ct
+    qt6pas
+    qterminal
+    reflector
+    sddm
+    seahorse
+    sof-firmware
+    steam
+    stockfish-git
+    strace
+    sudo
+    swaync
+    thermald
+    tree
+    ttf-jetbrains-mono-nerd
+    ttf-ms-fonts
+    unrar
+    unzip
+    uv
+    vulkan-intel
+    waybar-minimal-git
+    wget
+    wine
+    wine-mono
+    winetricks
+    wireplumber
+    wl-clipboard
+    wlr-randr
+    woff2-font-awesome
+    wtype
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-lxqt
+    xdg-desktop-portal-wlr
+    xorg-xhost
+    xorg-xwayland
+    yay
+    zip
+    zoom
+)
+
+# 3. Install Packages
+echo "Beginning installation of ${#PACKAGES[@]} packages..."
+# Using --needed ensures we safely skip packages that are already up to date (like the linux kernel and grub)
+yay -S --needed --noconfirm "${PACKAGES[@]}"
+
+# 4. Flatpak Packages
+FLATPAK_PACKAGES=(
+    # Add your flatpak app IDs here (e.g. com.spotify.Client)
+    com.discordapp.Discord
+    org.onlyoffice.desktopeditors
+    org.videolan.VLC
+    org.vinegarhq.Sober
+)
+
+if [ ${#FLATPAK_PACKAGES[@]} -gt 0 ]; then
+    echo "Beginning flatpak installation..."
+    # Ensure flathub repository is enabled
+    sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    
+    # Install the flatpak packages
+    flatpak install -y flathub "${FLATPAK_PACKAGES[@]}"
+fi
+
+echo "=========================================="
+echo "Package installation complete!"

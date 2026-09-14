@@ -1,0 +1,133 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 45,
+    "spacing": 4,
+    "modules-left": [
+        "group/app",
+        "wlr/taskbar"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "network",
+        "pulseaudio",
+        "battery",
+        "custom/notification"
+    ],
+    "group/app": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": true
+        },
+        "modules": [
+            "custom/startmenu",
+            "custom/filemanager",
+            "custom/terminal",
+            "custom/onlyoffice",
+            "custom/browser"
+        ]
+    },
+    /* --- MODULE SETTINGS --- */
+    "custom/startmenu": {
+        "format": "",
+        "on-click": "killall nwg-menu || nwg-menu -k",
+        "tooltip": false
+    },
+    "custom/filemanager": {
+        "format": "",
+        "on-click": "pcmanfm-qt",
+        "tooltip-format": "File Manager"
+    },
+    "custom/terminal": {
+        "format": "",
+        "on-click": "qterminal",
+        "tooltip-format": "Terminal"
+    },
+    "custom/browser": {
+        "format": "",
+        "on-click": "firefox",
+        "tooltip-format": "Firefox"
+    },
+    "custom/onlyoffice": {
+        "format": " ", //this is the image, so we keep it blank space
+        "on-click": "flatpak run org.onlyoffice.desktopeditors",
+        "tooltip-format": "Only Office"
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 40,
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": [
+            "nwg-menu"
+        ]
+    },
+    "clock": {
+        "format": "{:%H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%A, %d %B %Y}"
+    },
+    "network": {
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "  Wired",
+        "format-disconnected": "⚠  Offline",
+        "tooltip-format": "{essid}",
+        "on-click": "qterminal -e nmtui"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 Muted",
+        "format-icons": {
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    }
+}

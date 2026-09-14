@@ -1,0 +1,169 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 7 Free Solid", "Font Awesome 7 Brands", "Font Awesome 7 Free", "Noto Color Emoji", sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: rgba(43, 48, 59, 0.5);
+    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#taskbar {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+button {
+    box-shadow: inset 0 -3px transparent;
+    border: none;
+    border-radius: 0;
+}
+
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#pulseaudio:hover {
+    background-color: #a37800;
+}
+
+#clock,
+#battery,
+#pulseaudio,
+#tray {
+    padding: 0 10px;
+    color: #ffffff;
+}
+
+#clock {
+    background-color: #64727D;
+}
+
+#battery {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #ffffff;
+    background-color: #26A65B;
+}
+
+#network {
+    color: #ffffff;
+    background-color: #1793d1;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#pulseaudio {
+    background-color: #f1c40f;
+    color: #000000;
+}
+
+#pulseaudio.muted {
+    background-color: #90b1b1;
+    color: #2a5c45;
+}
+
+#tray {
+    background-color: #2980b9;
+}
+
+#tray>.passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#custom-startmenu,
+#custom-filemanager,
+#custom-terminal,
+#custom-onlyoffice,
+#custom-browser {
+    padding: 0 8px;
+    margin: 0 4px;
+}
+
+#custom-startmenu label,
+#custom-filemanager label,
+#custom-terminal label,
+#custom-onlyoffice label,
+#custom-browser label {
+    font-size: 36px;
+}
+
+#custom-startmenu {
+    color: #1793d1;
+}
+
+#custom-filemanager {
+    color: #f1c40f;
+}
+
+#custom-terminal {
+    color: #bdc3c7;
+}
+
+#custom-onlyoffice {
+    background-image: url("/var/lib/flatpak/exports/share/icons/hicolor/256x256/apps/org.onlyoffice.desktopeditors.png");
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 36px;
+}
+
+#custom-browser {
+    color: #e67e22;
+}
+
+#custom-notification {
+    padding-left: 5px;
+    padding-right: 10px;
+    transition: background-color 0.2s ease;
+}
+
+#custom-notification:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+}

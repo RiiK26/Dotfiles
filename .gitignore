@@ -1,0 +1,11 @@
+.gitconfig
+.gtkrc-2.0
+
+~/.config/lxqt/filedialog.conf
+~/.config/pcmanfm-qt/lxqt/settings.conf
+~/.config/qterminal.org/qterminal.ini
+~/.config/pcmanfm-qt/lxqt/recent-files.conf
+~/.config/pcmanfm-qt/default/recent-files.conf
+~/.config/qterminal.org/qterminal_bookmarks.xml
+*.lock
+*.rmlock
