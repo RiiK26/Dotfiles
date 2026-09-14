@@ -15,5 +15,6 @@ export VCPKG_DISABLE_METRICS=1
 export PATH=$PATH:$HOME/go/bin
 export NDK_HOME=/opt/android-ndk
 export GPG_TTY=$(tty)
+export GH_TELEMETRY=false
 
 [[ ${BLE_VERSION-} ]] && ble-attach
