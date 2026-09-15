@@ -16,5 +16,6 @@ export PATH=$PATH:$HOME/go/bin
 export NDK_HOME=/opt/android-ndk
 export GPG_TTY=$(tty)
 export GH_TELEMETRY=false
+export PATH=/home/riik/.opencode/bin:$PATH
 
 [[ ${BLE_VERSION-} ]] && ble-attach
