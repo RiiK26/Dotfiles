@@ -55,4 +55,5 @@
     "workbench.secondarySideBar.showLabels": false,
     "workbench.secondarySideBar.defaultVisibility": "visible",
     "security.workspace.trust.startupPrompt": "always",
+    "chat.tips.enabled": false,
 }
