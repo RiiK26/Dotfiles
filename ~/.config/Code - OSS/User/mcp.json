@@ -13,6 +13,18 @@
         "ghidra-mcp": {
             "type": "stdio",
             "command": "/usr/bin/bridge-mcp-ghidra"
+        },
+        "IlSpy": {
+            "type": "stdio",
+            "command": "/data/GithubRepos/ILSpy-Mcp/bin/Release/net8.0/ILSpy.Mcp",
+            "env": {
+                "ILSpy__MaxDecompilationSize": "2097152",
+                "ILSpy__DefaultTimeoutSeconds": "60"
+            },
+            "args": [
+                "/data/GithubRepos/cheatengine-mcp-bridge/MCP_Server/mcp_cheatengine.py"
+            ]
         }
-    }
+    },
+    "inputs": []
 }
