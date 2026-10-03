@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# --- SET MIN AND MAX VALUES HERE ---
 MIN=5    # Minimum brightness value (%)
 MAX=100  # Maximum brightness value (%)
 STEP=5   # Step value

@@ -4,9 +4,11 @@ STEP=5
 
 # Execute changes based on argument
 if [ "$1" == "StepUp" ]; then
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
     # -l 1.0 limits maximum volume to 100%
     wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ ${STEP}%+
 elif [ "$1" == "StepDown" ]; then
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
     wpctl set-volume @DEFAULT_AUDIO_SINK@ ${STEP}%-
 elif [ "$1" == "ToggleMute" ]; then
     wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
