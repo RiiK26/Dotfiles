@@ -19,7 +19,6 @@
     "editor.experimental.preferTreeSitter.typescript": false,
     "editor.experimental.treeSitterTelemetry": false,
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Nerd Font', 'JetBrainsMono Nerd Font'",
-    "editor.fontSize": 16,
     "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
     "editor.minimap.renderCharacters": false,
@@ -70,4 +69,5 @@
         "scminput": false,
         "markdown": false
     },
+    "github.copilot.nextEditSuggestions.eagerness": "low",
 }

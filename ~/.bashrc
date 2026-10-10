@@ -18,5 +18,6 @@ export GPG_TTY=$(tty)
 export GH_TELEMETRY=false
 export PATH=$PATH:$HOME/.opencode/bin:$PATH
 export PATH=$PATH:$HOME/.dotnet
+export OTEL_SDK_DISABLED=true
 
 [[ ${BLE_VERSION-} ]] && ble-attach
