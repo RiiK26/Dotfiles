@@ -73,10 +73,16 @@
         "format-alt": "{:%A, %d %B %Y}"
     },
     "network": {
+        "format": "⚠  Offline",
         "format-wifi": "  {signalStrength}%",
         "format-ethernet": "  Wired",
         "format-disconnected": "⚠  Offline",
+        "format-disabled": "󰤮  Disabled",
         "tooltip-format": "{essid}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "tooltip-format-disabled": "Wi-Fi Disabled",
         "on-click": "qterminal -e nmtui"
     },
     "pulseaudio": {

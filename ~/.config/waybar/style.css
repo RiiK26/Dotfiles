@@ -47,6 +47,7 @@ button:hover {
 #clock,
 #battery,
 #pulseaudio,
+#network,
 #tray {
     padding: 0 10px;
     color: #ffffff;
@@ -70,6 +71,14 @@ button:hover {
 #network {
     color: #ffffff;
     background-color: #1793d1;
+}
+
+#network.disconnected {
+    background-color: #d35400;
+}
+
+#network.disabled {
+    background-color: #64727D;
 }
 
 @keyframes blink {
