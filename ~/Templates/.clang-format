@@ -1,21 +1,22 @@
+BasedOnStyle: WebKit
+
 AccessModifierOffset: -2
 AlignAfterOpenBracket: BlockIndent
 AlignArrayOfStructures: Left
 AlignConsecutiveAssignments:
   Enabled: true
   AcrossEmptyLines: true
-  AcrossComments: false
+  AcrossComments: true
 
 AlignConsecutiveDeclarations:
   Enabled: true
   AcrossEmptyLines: false
   AcrossComments: false
-  AlignFunctionDeclarations: false
 
 AlignConsecutiveMacros:
   Enabled: true
   AcrossEmptyLines: true
-  AcrossComments: false
+  AcrossComments: true
 
 AlignEscapedNewlines: DontAlign
 AlignOperands: AlignAfterOperator
@@ -25,11 +26,10 @@ AlignTrailingComments:
 
 AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortCaseLabelsOnASingleLine: false
-AllowShortEnumsOnASingleLine: false
+AllowShortEnumsOnASingleLine: true
 AllowShortIfStatementsOnASingleLine: Never
 
-BreakTemplateDeclarations: Yes
-BasedOnStyle: WebKit
+AlwaysBreakTemplateDeclarations: true
 BitFieldColonSpacing: After
 BinPackParameters: false
 BreakBeforeBinaryOperators: NonAssignment
